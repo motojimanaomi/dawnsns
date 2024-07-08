@@ -16,10 +16,17 @@ class FollowsController extends Controller
         ->where('follower_id', Auth::id())
         ->get();
         $posts = DB::table('posts')
-        // フォローしている人だけ出す
+        ->join('follows', 'posts.user_id', '=', 'follows.user_id')
+        ->where('follower_id', Auth::id())
         ->get();
-        // dd($follows);
-// select from users join follows on users.name = follows.user_id
+
+        // $users = DB::table('users')
+        // ->join('follows', 'users.id', '=', 'follows.user_id')
+        // ->where('follower_id', Auth::id())
+        // ->get();
+
+//  dd($posts);
+
         return view('follows.follows',['follows' => $follows, 'posts' => $posts]);
     }
 
@@ -37,7 +44,6 @@ class FollowsController extends Controller
     public function followDelete(Request $request)
     {
         $id = $request->input('id');
-        // dd($id);
         DB::table('follows')
         ->where('user_id', $id)
         ->where('follower_id',Auth::id())

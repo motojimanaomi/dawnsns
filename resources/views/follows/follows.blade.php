@@ -14,9 +14,9 @@
 
       @foreach ($posts as $post)
       <tr>
-        <td>{{ $post->id }}</td>
-        <td>{{ $post->post }}</td>
-        <td>{{ $post->created_at }}</td>
+        <td>{{ $post->id }}</td><br>
+        <td>{{ $post->post }}</td><br>
+        <td>{{ $post->created_at }}</td><br>
       </tr>
       @endforeach
 
