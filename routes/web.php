@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\FollowsController;
+use App\Http\Controllers\FollowersController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +49,7 @@ Route::post('/follow/create',[FollowsController::class, 'followCreate']);
 Route::get('/follow-list',[FollowsController::class, 'follows']);
 
 Route::delete('/follow/delete', [FollowsController::class, 'followDelete']);
+
+Route::get('/follower-list',[FollowersController::class, 'followers']);
+
+Route::get('/profile',[ProfileController::class, 'profile']);

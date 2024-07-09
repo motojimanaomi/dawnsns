@@ -4,11 +4,11 @@
 
   <div class='container'>
 
-      @foreach ($follows as $follow)
+      @foreach ($followers as $follower)
       <div>
-        {{ $follow->name }}
+        {{ $follower->name }}
       </div>
-      <form action="/follow/create" method="post">
+      <form action="/follower-list" method="get">
 
       @endforeach
 
@@ -19,7 +19,6 @@
         <td>{{ $post->created_at }}</td><br>
       </tr>
       @endforeach
-
   </div>
 
 @endsection

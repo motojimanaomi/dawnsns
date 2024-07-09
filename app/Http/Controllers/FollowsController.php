@@ -17,15 +17,10 @@ class FollowsController extends Controller
         ->get();
         $posts = DB::table('posts')
         ->join('follows', 'posts.user_id', '=', 'follows.user_id')
+        ->join('users', 'posts.user_id', '=', 'users.id')
         ->where('follower_id', Auth::id())
         ->get();
-
-        // $users = DB::table('users')
-        // ->join('follows', 'users.id', '=', 'follows.user_id')
-        // ->where('follower_id', Auth::id())
-        // ->get();
-
-//  dd($posts);
+// dd($posts);
 
         return view('follows.follows',['follows' => $follows, 'posts' => $posts]);
     }
