@@ -6,6 +6,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\FollowersController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileEditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('register', [PostsController::class, 'register']);//追記
+Route::get('register', [PostsController::class, 'register']);
 
 Auth::routes();
 
@@ -53,3 +54,7 @@ Route::delete('/follow/delete', [FollowsController::class, 'followDelete']);
 Route::get('/follower-list',[FollowersController::class, 'followers']);
 
 Route::get('/profile',[ProfileController::class, 'profile']);
+
+Route::get('/profile/edit',[ProfileEditController::class, 'profileEdit']);
+
+Route::get('/profile/{id}/edit',[ProfileEditController::class, 'profileEdit']);

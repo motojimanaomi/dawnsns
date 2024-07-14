@@ -17,10 +17,10 @@
 
       @foreach ($posts as $post)
       <div>
-        {{ $posts->id }}
-        {{ $posts->user_id }}
-        {{ $posts->post }}
-        {{ $posts->created_at }}
+        {{ $post->id }}<br>
+        {{ $post->user_id }}<br>
+        {{ $post->post }}<br>
+        {{ $post->created_at }}<br>
       </div>
       <form action="/profile" method="get">
       @endforeach

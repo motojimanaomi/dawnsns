@@ -15,14 +15,11 @@ class ProfileController extends Controller
         ->where('id', Auth::id())
         ->get();
 
-
-
         $posts = DB::table('posts')
         ->where('user_id', Auth::id())
         ->get();
 
   //  dd($profile);
-
 
         return view('profile.profile',['profile' => $profile, 'posts' => $posts]);
 
