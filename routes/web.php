@@ -57,4 +57,6 @@ Route::get('/profile',[ProfileController::class, 'profile']);
 
 Route::get('/profile/edit',[ProfileEditController::class, 'profileEdit']);
 
-Route::get('/profile/{id}/edit',[ProfileEditController::class, 'profileEdit']);
+Route::get('/profile/{id}/update-form',[ProfileEditController::class, 'updateForm']);
+
+Route::put('profile/update', [ProfileEditController::class, 'update']);

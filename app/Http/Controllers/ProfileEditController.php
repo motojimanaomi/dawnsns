@@ -13,20 +13,30 @@ class ProfileEditController extends Controller
     {
         $profile = DB::table('users')
         ->where('id', Auth::id())
-        ->first();
+        ->get();
 
-  //  dd($profile);
+   dd($profile);
 
         return view('profile.profileEdit',['profile' => $profile]);
 
     }
 
     public function updateForm($id){
-    $post = DB::table('users')
+    $user = DB::table('users')
         ->where('id', $id)
         ->first();
-    return view('profile.profileEdit', ['id' => $id]);
+    return view('profile.profileEdit', ['profile' => $user]);
 }
 
+    public function update(Request $request){
+        $id = $request->input('id');
+        $up_post = $request->input('upPost');
+        DB::table('users')
+            ->where('id', $id)
+            ->update(
+                ['user' => $up_post]
+            );
 
+        return redirect('/index');
+    }
 }

@@ -15,6 +15,10 @@
       <form action="/profile" method="get">
       @endforeach
 
+      <td>
+      <a class="btn btn-primary" href="/profile/{{ $profile->id }}/update-form">更新</a>
+      </td>
+
       @foreach ($posts as $post)
       <div>
         {{ $post->id }}<br>

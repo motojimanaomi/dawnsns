@@ -4,23 +4,41 @@
 
   <div class='container'>
     <tr>
-    <th>UserName</th>
-    <th>MailAddress</th>
-    <th>Password</th>
-    <th>Password confirm</th>
-    <th>Bio</th>
-    <th>Icon Image</th>
+
+
+
+
     <th></th>
     </tr>
       <form action="/profile/edit" method="get">
-      <div>
-        {{ $profile->id }}
-        {{ $profile->name }}
-        {{ $profile->image }}
-        {{ $profile->email }}
-        {{ $profile->bio }}
+      @method('GET')
+      @csrf
+      <class="form-group">
+      <th>UserName</th>
+      <input type="text" name="upPost" value="{{$profile->name}}" class="form-control" required>
+
+      <th>Icon Image</th>
+      <input type="text" name="upPost" value="{{$profile->image}}" class="form-control" required>
+
+      <th>MailAddress</th>
+      <input type="text" name="upPost" value="{{$profile->email}}" class="form-control" required>
+
+      <th>Password</th>
+      <input type="text" name="upPost" value="{{$profile->password}}" class="form-control" required>
+
+      <th>Password confirm</th>
+      <input type="text" name="upPost" value="{{$profile->password}}" class="form-control" required>
+
+      <th>Bio</th>
+      <input type="text" name="upPost" value="{{$profile->bio}}" class="form-control" required>
+
+      <div class="pull-right submit-btn">
+      <button type="submit" class="btn btn-primary">更新</button>
       </div>
-<!-- formは一つ。この中にもろもろ書いていく -->
+
+
+
+<!-- formは一つ。この中に書いていく -->
       </form>
   </div>
 
