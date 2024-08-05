@@ -8,6 +8,9 @@
       <div>
         {{ $follower->name }}
       </div>
+      <td>
+      <a class="btn btn-primary" href="/other/profile/{targetUserId}">プロフィール</a>
+      </td>
       <form action="/follower-list" method="get">
 
       @endforeach

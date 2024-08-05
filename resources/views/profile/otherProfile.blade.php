@@ -6,23 +6,17 @@
 
       @foreach ($profile as $profile)
       <div>
-        {{ $profile->id }}
         {{ $profile->name }}
         {{ $profile->image }}
         {{ $profile->email }}
         {{ $profile->bio }}
       </div>
-      <form action="/profile" method="get">
+      <form action="/other/profile/{targetUserId}" method="get">
       @endforeach
-
-      <td>
-      <a class="btn btn-primary" href="/profile/edit">更新</a>
-      </td>
 
       @foreach ($posts as $post)
       <div>
-        {{ $post->id }}<br>
-        {{ $post->user_id }}<br>
+        {{ $profile->name }}<br>
         {{ $post->post }}<br>
         {{ $post->created_at }}<br>
       </div>

@@ -7,6 +7,8 @@ use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\FollowersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileEditController;
+use App\Http\Controllers\OtherProfileController;
+use App\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +45,7 @@ Route::delete('post/delete', [PostsController::class, 'delete']);
 
 Route::get('/search',[UsersController::class, 'search']);
 
-Route::post('/search/result', [UsersController::class,'searchResult']);
+Route::get('/search/result', [UsersController::class,'searchResult']);
 
 Route::post('/follow/create',[FollowsController::class, 'followCreate']);
 
@@ -57,6 +59,6 @@ Route::get('/profile',[ProfileController::class, 'profile']);
 
 Route::get('/profile/edit',[ProfileEditController::class, 'profileEdit']);
 
-Route::get('/profile/{id}/update-form',[ProfileEditController::class, 'updateForm']);
-
 Route::put('profile/update', [ProfileEditController::class, 'update']);
+
+Route::get('/other/profile/{targetUserId}',[OtherProfileController::class, 'otherProfile']);

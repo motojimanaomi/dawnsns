@@ -27,7 +27,7 @@ class FollowsController extends Controller
 
     public function followCreate(Request $request)
     {
-        $id = $request->input('targetUserId');
+        $targetUserId = $request->input('targetUserId');
         DB::table('follows')->insert([
             'user_id' => $id,
             'follower_id' => Auth::id(),

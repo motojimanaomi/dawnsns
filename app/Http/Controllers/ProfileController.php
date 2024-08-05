@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
+
 class ProfileController extends Controller
 {
 
@@ -19,12 +20,8 @@ class ProfileController extends Controller
         ->where('user_id', Auth::id())
         ->get();
 
-  //  dd($profile);
-
         return view('profile.profile',['profile' => $profile, 'posts' => $posts]);
-
     }
-
 
 
 }
