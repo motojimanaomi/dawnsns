@@ -22,9 +22,9 @@ class ProfileEditController extends Controller
 
     public function update(Request $request)
     {
-              dd($request);
-
-      $request->file('file')->store('');
+        $imagemap = $request->input('file');
+        dd($imagename);
+        $request->file('file')->storeAs('public/userIcon',$imagename);
         $name = $request->input('name');
         DB::table('users')
             ->where('id', Auth::id())
@@ -32,11 +32,10 @@ class ProfileEditController extends Controller
             ->update(
                 ['name' => $name]
             );
-        $image = $request->input('image');
         DB::table('users')
             ->where('id', Auth::id())
             ->update(
-                ['image' => $image]
+                ['image' => $imagename]
             );
         $email = $request->input('email');
         DB::table('users')
@@ -49,12 +48,6 @@ class ProfileEditController extends Controller
             ->where('id', Auth::id())
             ->update(
                 ['password' => $password]
-            );
-        $password_confirmation = $request->input('password_confirmation');
-        DB::table('users')
-            ->where('id', Auth::id())
-            ->update(
-                ['password_confirmation' => $password_confirmation]
             );
         $bio = $request->input('bio');
         DB::table('users')
@@ -71,10 +64,10 @@ class ProfileEditController extends Controller
         return Validator::make($request,
         [
         'name' => ['required', 'between:4,12','"/^[ぁ-んァ-ヶ一-龥々]+$/u"'],
-        'image' => ['required'],
+        'image' => [''],
         'email' => ['required','max:255','"/^[!-~]+$/"','email','unique'],
-        'password' => ['required', 'min:8'],
-        'password_confirmation' => ['required', 'min:8', 'same:password'],
+        'password' => ['required', 'between:8,128','"/^[!-~]+$/"'],
+        'password_confirmation' => ['required','same:password'],
         'bio' => ['max:400'],
         ],
 
@@ -89,7 +82,13 @@ class ProfileEditController extends Controller
         'email.email' => 'メールアドレスは正しい形式で入力してください。',
         'email.unique' => '入力されたメールアドレスはすでに登録されています。別のメールアドレスを登録してください。',
 
-        'email.email' => 'メールアドレスではありません',
+        'password.required' => 'パスワードを入力してください。',
+        'password.between:8,128' => 'パスワードは8文字以上128文字以内で入力してください。',
+        'password."/^[!-~]+$/"' => 'パスワードには半角英数記号を入力してください。',
+
+        'password_confirmation.required' => '確認用のパスワードを入力してください。',
+        'password_confirmation.same:password' => 'パスワードと確認の入力が一致しません。',
+
         'password.required' => '必須項目です',
         'password.min' => '8文字以上で入力してください',
         'password-confirm.required' => '必須項目です',
@@ -99,7 +98,7 @@ class ProfileEditController extends Controller
         'bio.max:400' => 'メッセージは400文字以内で入力してください。',
 
         ]);
-        // dd($name);
+        dd($name);
     }
 
 }
