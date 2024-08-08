@@ -12,6 +12,7 @@
         {{ $profile->email }}
         {{ $profile->bio }}
       </div>
+      <img src="{{ asset('images/' . $profile->image) }}" alt="">
       <form action="/profile" method="get">
       @endforeach
 
